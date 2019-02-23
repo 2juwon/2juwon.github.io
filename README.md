@@ -1,10 +1,14 @@
-## Welcome to GitHub Pages
-
-You can use the [editor on GitHub](https://github.com/2juwon/todo/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Welcome to 2juwon GitHub Pages
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
 ### [TODO APP](https://2juwon.github.io/todo) ###
+
+Todo App은 React Native로 만든 샘플 App입니다.
+노마드 코더인 니콜라스의 강의를 참고하였습니다.
+
+## 사용 기술 ## 
+- react-native
 
 ### Markdown
 
