@@ -10,6 +10,19 @@ Todo App은 React Native로 만든 샘플 App입니다.
 ## 사용 기술 ## 
 - react-native
 
+### [Alcheck Android App](https://2juwon.github.io/alcheck) ###
+## 사용 기술 ## 
+ * kotlin + coroutine
+ * Room : for RDB
+ * retrofit2 + OkHttp3: server communication
+ * glide : Image SDK
+ * CameraX : handle camera
+ * Firebase : crashlytics, messaging
+ * Locaion : google location
+ * kakao : Kakao SDK
+ * Bluetooth : nordicsemi android ble library
+ * Lottie : for loading animation
+
 ### Markdown
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
