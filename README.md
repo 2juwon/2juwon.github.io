@@ -10,7 +10,7 @@ Todo App은 React Native로 만든 샘플 App입니다.
 ## 사용 기술 ## 
 - react-native
 
-### [Alcheck Android App](https://2juwon.github.io/alcheck) ###
+### [Alcheck Android App](https://github.com/infii-dev/alcheck_Android) ###
 ## 사용 기술 ## 
  * kotlin + coroutine
  * Room : for RDB
