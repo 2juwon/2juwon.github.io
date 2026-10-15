@@ -53,7 +53,9 @@ ul.list{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
 .item p{margin:3px 0 0;color:var(--muted);font-size:15px;line-height:1.55}
 .item .note{display:inline-block;margin-top:6px;font-size:13px;color:var(--muted)}
 .go{font:inherit;font-size:15px;font-weight:700;text-decoration:none;white-space:nowrap;padding:10px 18px;border-radius:999px;background:var(--ink);color:var(--bg)}
-.go:hover{background:var(--blue);color:#fff}
+a.go:hover{background:var(--blue);color:#fff}
+.go.soon{background:transparent;color:var(--muted);border:1.5px dashed var(--line);font-weight:600;cursor:default}
+.item.is-soon .ico{opacity:.55}
 
 footer{padding:56px 0 48px;color:var(--muted);font-size:14px}
 footer p{margin:0 0 6px}
@@ -99,14 +101,14 @@ footer a{color:var(--ink)}
         </div>
         <a class="go" href="https://2juwon.github.io/pinball/">뽑으러 가기</a>
       </li>
-      <li class="item" style="--c:var(--green)">
+      <li class="item is-soon" style="--c:var(--green)">
         <div class="ico"><svg viewBox="0 0 40 40" fill="none"><path d="M5 23c5-9 18-11 27-5l4-5v14l-4-4c-8 6-21 5-27 0z" fill="#fff"/><path d="M17 14l3-6 3 7" fill="#fff"/><circle cx="12" cy="21" r="1.6" fill="#1A9E75"/></svg></div>
         <div>
           <h3>부캉이 키우기</h3>
           <p>북항 친수공원 수로에 찾아온 상어 부캉이에게 밥 주고, 놀아 주고, 물을 치워 줘요. 0.8m 새끼에서 4m 전설까지 자라요.</p>
-          <span class="note">비공식 팬 게임 · claude.ai에서 열려요</span>
+          <span class="note">비공식 팬 게임</span>
         </div>
-        <a class="go" href="https://claude.ai/artifact/1n7GjZPJmBEyCwrfEzjfK3">키우러 가기</a>
+        <span class="go soon" aria-disabled="true">준비 중</span>
       </li>
     </ul>
   </section>
