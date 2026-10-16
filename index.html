@@ -56,6 +56,12 @@ ul.list{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
 a.go:hover{background:var(--blue);color:#fff}
 .go.soon{background:transparent;color:var(--muted);border:1.5px dashed var(--line);font-weight:600;cursor:default}
 .item.is-soon .ico{opacity:.55}
+#ppong-egg{-webkit-tap-highlight-color:transparent;user-select:none}
+#ppong-egg.tick{animation:tick .18s ease}
+#ppong-egg.flip{animation:flip .6s ease forwards}
+@keyframes tick{50%{transform:rotate(-8deg) scale(.94)}}
+@keyframes flip{to{transform:rotateY(180deg) scale(1.15)}}
+@media (prefers-reduced-motion: reduce){#ppong-egg.tick,#ppong-egg.flip{animation:none}}
 
 footer{padding:56px 0 48px;color:var(--muted);font-size:14px}
 footer p{margin:0 0 6px}
@@ -86,7 +92,7 @@ footer a{color:var(--ink)}
     <p class="lead">혼자 해도, 같이 해도 한 판이 금방 끝나요.</p>
     <ul class="list">
       <li class="item" style="--c:var(--red)">
-        <div class="ico"><svg viewBox="0 0 40 40" fill="none"><rect x="7" y="6" width="17" height="26" rx="3" fill="#fff" transform="rotate(-10 15 19)"/><rect x="16" y="8" width="17" height="26" rx="3" fill="#fff" stroke="#E8483B" stroke-width="2" transform="rotate(8 24 21)"/><circle cx="25" cy="17" r="4" fill="#E8483B"/></svg></div>
+        <div class="ico" id="ppong-egg"><svg viewBox="0 0 40 40" fill="none"><rect x="7" y="6" width="17" height="26" rx="3" fill="#fff" transform="rotate(-10 15 19)"/><rect x="16" y="8" width="17" height="26" rx="3" fill="#fff" stroke="#E8483B" stroke-width="2" transform="rotate(8 24 21)"/><circle cx="25" cy="17" r="4" fill="#E8483B"/></svg></div>
         <div>
           <h3>나일롱뽕</h3>
           <p>화투 나일롱뽕. 컴퓨터 삼촌·할머니·이모와 치거나, 방을 만들어 사람들과 겨뤄요. 1등 하면 랭킹에 이름이 올라가요.</p>
@@ -217,6 +223,19 @@ footer a{color:var(--ink)}
   if(reduce)settle();else raf=requestAnimationFrame(loop);
   let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>{cancelAnimationFrame(raf);layout();spawn();settle();},150)});
   matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change',draw);
+})();
+</script>
+<script>
+// 이스터에그: 나일롱뽕 화투 아이콘을 3초 안에 5번 누르면 관리 페이지로
+(function(){
+  const el=document.getElementById('ppong-egg');if(!el)return;
+  const URL='https://nylon-ppong.2juwon.workers.dev/admin';
+  let taps=[];
+  el.addEventListener('click',()=>{
+    const now=Date.now();taps=taps.filter(t=>now-t<3000);taps.push(now);
+    el.classList.remove('tick');void el.offsetWidth;el.classList.add('tick');
+    if(taps.length>=5){taps=[];el.classList.add('flip');setTimeout(()=>{location.href=URL},450);}
+  });
 })();
 </script>
 </body>
