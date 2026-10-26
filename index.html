@@ -10,6 +10,11 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://2juwon.github.io/">
 <meta name="theme-color" content="#2F5BEA">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="작은 놀이터">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%232F5BEA'/%3E%3Ccircle cx='11' cy='11' r='4' fill='%23fff' opacity='.55'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,6 +44,12 @@ a{color:inherit}
 #pins{position:absolute;inset:0;width:100%;height:100%;display:block}
 .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(44px,11vw,76px);line-height:1.05;margin:4px 0 14px;letter-spacing:-.01em}
 .hero p{margin:0;max-width:30em;color:var(--muted);font-size:18px}
+.install{margin-top:16px;display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;background:var(--blue);color:#fff;font:inherit;font-weight:700;font-size:15px;padding:10px 18px 10px 14px;cursor:pointer;box-shadow:0 6px 16px rgba(47,91,234,.3)}
+.install svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.install:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.ios-tip{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(calc(100% - 32px),420px);background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:0 12px 32px rgba(0,0,0,.2);z-index:50;font-size:15px;line-height:1.55}
+.ios-tip b{color:var(--blue)}
+.ios-tip button{float:right;border:0;background:none;color:var(--muted);font:inherit;font-size:20px;line-height:1;cursor:pointer;margin:-4px -6px 0 8px}
 
 /* 목록 */
 section{padding:44px 0 4px}
@@ -83,6 +94,7 @@ footer a{color:var(--ink)}
   <div class="wrap">
     <h1>이주원의<br>작은 놀이터</h1>
     <p>가족이랑, 팀이랑 쓰려고 하나씩 만든 게임과 도구예요. 설치도 가입도 없이 휴대폰에서 바로 열려요.</p>
+    <button class="install" id="installBtn" type="button" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m-5-5l5 5 5-5M5 19h14"/></svg>홈 화면에 앱으로 추가</button>
   </div>
 </header>
 
@@ -325,6 +337,27 @@ footer a{color:var(--ink)}
     el.classList.remove('tick');void el.offsetWidth;el.classList.add('tick');
     if(taps.length>=5){taps=[];el.classList.add('flip');setTimeout(()=>{location.href=URL},450);}
   });
+})();
+</script>
+<script>
+/* 앱으로 설치: 크롬·엣지는 설치 창, 아이폰·아이패드는 홈 화면에 추가하는 방법 안내 */
+(function(){
+  var btn = document.getElementById('installBtn'), ev = null;
+  function standalone(){ try{ return matchMedia('(display-mode: standalone)').matches || navigator.standalone === true; }catch(e){ return false; } }
+  var ios = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (standalone()) return;
+  window.addEventListener('beforeinstallprompt', function(e){ ev = e; btn.hidden = false; }); // 막지 않아서 크롬 기본 설치 안내도 그대로 뜸
+  window.addEventListener('appinstalled', function(){ ev = null; btn.hidden = true; });
+  if (ios) btn.hidden = false;
+  btn.addEventListener('click', function(){
+    if (ev){ var e = ev; ev = null; e.prompt(); if (e.userChoice) e.userChoice.then(function(r){ if (r && r.outcome !== 'accepted') ev = e; else btn.hidden = true; }); return; }
+    var old = document.querySelector('.ios-tip'); if (old) old.remove();
+    var tip = document.createElement('div'); tip.className = 'ios-tip'; tip.setAttribute('role', 'dialog');
+    tip.innerHTML = '<button type="button" aria-label="닫기">×</button>사파리 아래(아이패드는 위)의 <b>공유</b> 버튼 → <b>홈 화면에 추가</b> → <b>추가</b>를 누르면 홈 화면에 놀이터 아이콘이 생겨요.';
+    tip.querySelector('button').onclick = function(){ tip.remove(); };
+    document.body.appendChild(tip);
+  });
+  if ('serviceWorker' in navigator) window.addEventListener('load', function(){ navigator.serviceWorker.register('/sw.js').catch(function(){}); });
 })();
 </script>
 </body>
