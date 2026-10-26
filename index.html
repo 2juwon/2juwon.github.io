@@ -82,6 +82,17 @@ a.go:hover{background:var(--blue);color:#fff}
 @keyframes flip{to{transform:rotateY(180deg) scale(1.15)}}
 @media (prefers-reduced-motion: reduce){#ppong-egg.tick,#ppong-egg.flip{animation:none}}
 
+/* 인기 게임: 두 장을 크게 */
+.hot ul.list{grid-template-columns:repeat(2,minmax(0,1fr))}
+.hot .item{border:2px solid color-mix(in srgb,var(--c) 45%,var(--line));padding:22px}
+.hot .item .ico{width:64px;height:64px}
+.hot .item .ico svg{width:42px;height:42px}
+.hot .item h3{font-size:20px}
+.hot .item p{font-size:15px}
+h2 .dot.star{width:26px;height:26px;background:var(--yellow);display:grid;place-items:center}
+h2 .dot.star svg{width:17px;height:17px;fill:#fff}
+@media (max-width:520px){ .hot .item{padding:14px 12px 12px} .hot .item .ico{width:48px;height:48px} .hot .item .ico svg{width:32px;height:32px} .hot .item h3{font-size:16.5px} .hot .item p{font-size:13px} }
+
 footer{padding:56px 0 48px;color:var(--muted);font-size:14px}
 footer p{margin:0 0 6px}
 footer a{color:var(--ink)}
@@ -111,6 +122,30 @@ footer a{color:var(--ink)}
 </header>
 
 <main class="wrap">
+  <section class="hot" style="--c:var(--red)">
+    <h2><span class="dot star"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/></svg></span>인기 게임</h2>
+    <p class="lead">요즘 제일 많이 하는 두 가지예요.</p>
+    <ul class="list">
+      <li class="item" style="--c:var(--red)">
+        <div class="ico"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="12.5" fill="#fff"/><path d="M8 20h24M20 7.5c-4.5 4-4.5 21 0 25M20 7.5c4.5 4 4.5 21 0 25M10 13.5h20M10 26.5h20" stroke="#E8483B" stroke-width="1.6"/><path d="M24 31l12-6-4 7-2.5-1.8-2 2.4v-3z" fill="#2F5BEA" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h3>한판 세계여행</h3>
+          <p>주사위를 굴려 세계 도시를 사고 별장·빌딩·호텔을 지어 통행료를 받는 보드게임. 판 가운데 황금열쇠를 뽑고, 산 땅은 국기 그려진 카드로 모아요. 컴퓨터와, 한 휴대폰으로, 또는 초대 링크로 각자 휴대폰에서 2~4명이 함께.</p>
+        </div>
+        <a class="go" href="https://2juwon.github.io/world-trip/">여행 떠나기</a>
+      </li>
+      <li class="item" style="--c:var(--yellow)">
+        <div class="ico"><svg viewBox="0 0 40 40" fill="none"><rect x="5" y="9" width="17" height="17" rx="4" fill="#fff" transform="rotate(-12 13 17)"/><rect x="18" y="15" width="17" height="17" rx="4" fill="#fff" stroke="#F2B705" stroke-width="1.5" transform="rotate(10 26 23)"/><g fill="#1B2440"><circle cx="10" cy="13.5" r="1.6"/><circle cx="16" cy="20" r="1.6"/><circle cx="22.5" cy="19.5" r="1.6"/><circle cx="26.4" cy="23.6" r="1.6"/><circle cx="30" cy="27.6" r="1.6"/></g></svg></div>
+        <div>
+          <h3>야추 다이스</h3>
+          <p>주사위 5개를 굴려 족보를 맞추는 야추. 혼자 하거나 친구와 1:1, 1:1:1, 2:2로 겨뤄요.</p>
+          <span class="note">오상이 만들었어요 · 오상의 사이트로 넘어가요</span>
+        </div>
+        <a class="go" href="https://yahchoo.github.io/">하러 가기</a>
+      </li>
+    </ul>
+  </section>
+
   <section style="--c:var(--red)">
     <h2><span class="dot"></span>게임</h2>
     <p class="lead">혼자 해도, 같이 해도 한 판이 금방 끝나요.</p>
@@ -196,14 +231,6 @@ footer a{color:var(--ink)}
         </div>
         <a class="go" href="https://2juwon.github.io/yutnori/">윷 던지러 가기</a>
       </li>
-      <li class="item" style="--c:var(--red)">
-        <div class="ico"><svg viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="12.5" fill="#fff"/><path d="M8 20h24M20 7.5c-4.5 4-4.5 21 0 25M20 7.5c4.5 4 4.5 21 0 25M10 13.5h20M10 26.5h20" stroke="#E8483B" stroke-width="1.6"/><path d="M24 31l12-6-4 7-2.5-1.8-2 2.4v-3z" fill="#2F5BEA" stroke="#fff" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
-        <div>
-          <h3>한판 세계여행</h3>
-          <p>주사위를 굴려 세계 도시를 사고 별장·빌딩·호텔을 지어 통행료를 받는 보드게임. 판 가운데 황금열쇠를 뽑고, 산 땅은 국기 그려진 카드로 모아요. 컴퓨터와, 한 휴대폰으로, 또는 초대 링크로 각자 휴대폰에서 2~4명이 함께.</p>
-        </div>
-        <a class="go" href="https://2juwon.github.io/world-trip/">여행 떠나기</a>
-      </li>
       <li class="item" style="--c:var(--yellow)">
         <div class="ico"><svg viewBox="0 0 40 40" fill="none"><path d="M14 14a6 6 0 1 1 9 5c-2 1-3 2-3 5" stroke="#fff" stroke-width="4" stroke-linecap="round"/><circle cx="20" cy="31" r="2.6" fill="#fff"/></svg></div>
         <div>
@@ -266,14 +293,6 @@ footer a{color:var(--ink)}
           <p>숨겨진 네 자리 숫자를 추리해서 맞히는 숫자야구예요.</p>
         </div>
         <a class="go" href="https://4s-challenge.github.io/">하러 가기</a>
-      </li>
-      <li class="item" style="--c:var(--yellow)">
-        <div class="ico"><svg viewBox="0 0 40 40" fill="none"><rect x="5" y="9" width="17" height="17" rx="4" fill="#fff" transform="rotate(-12 13 17)"/><rect x="18" y="15" width="17" height="17" rx="4" fill="#fff" stroke="#F2B705" stroke-width="1.5" transform="rotate(10 26 23)"/><g fill="#1B2440"><circle cx="10" cy="13.5" r="1.6"/><circle cx="16" cy="20" r="1.6"/><circle cx="22.5" cy="19.5" r="1.6"/><circle cx="26.4" cy="23.6" r="1.6"/><circle cx="30" cy="27.6" r="1.6"/></g></svg></div>
-        <div>
-          <h3>야추 다이스</h3>
-          <p>주사위 5개를 굴려 족보를 맞추는 야추. 혼자 하거나 친구와 1:1, 1:1:1, 2:2로 겨뤄요.</p>
-        </div>
-        <a class="go" href="https://yahchoo.github.io/">하러 가기</a>
       </li>
       <li class="item" style="--c:var(--red)">
         <div class="ico"><svg viewBox="0 0 40 40" fill="none"><path d="M20 12c-3-3-11-3-12 5-1 9 5 17 9 17 1.5 0 2-.8 3-.8s1.5.8 3 .8c4 0 10-8 9-17-1-8-9-8-12-5z" fill="#fff"/><path d="M20 12c0-3 1-5 3-7" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><text x="20" y="28.5" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="800" fill="#E8483B">10</text></svg></div>
