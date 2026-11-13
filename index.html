@@ -47,6 +47,12 @@ a{color:inherit}
 .install{margin-top:16px;display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;background:var(--blue);color:#fff;font:inherit;font-weight:700;font-size:15px;padding:10px 18px 10px 14px;cursor:pointer;box-shadow:0 6px 16px rgba(47,91,234,.3)}
 .install svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .install:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.hero-btns{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px}
+.hero-btns .install{margin-top:0;text-decoration:none}
+.install[hidden]{display:none}
+.install.ohsang{background:#FF6A3D;box-shadow:0 6px 16px rgba(255,106,61,.3)}
+@media (max-width:520px){ .hero-btns{gap:8px;flex-wrap:nowrap} .hero-btns .install{font-size:13.5px;padding:9px 12px 9px 10px;gap:5px;white-space:nowrap} .hero-btns .install svg{width:15px;height:15px} }
+@media (max-width:355px){ .hero-btns{flex-wrap:wrap} }
 .ios-tip{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(calc(100% - 32px),420px);background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:0 12px 32px rgba(0,0,0,.2);z-index:50;font-size:15px;line-height:1.55}
 .ios-tip b{color:var(--blue)}
 .ios-tip button{float:right;border:0;background:none;color:var(--muted);font:inherit;font-size:20px;line-height:1;cursor:pointer;margin:-4px -6px 0 8px}
@@ -120,7 +126,10 @@ footer a{color:var(--ink)}
   <div class="wrap">
     <h1>이주원의<br>작은 놀이터</h1>
     <p>가족이랑, 팀이랑 쓰려고 하나씩 만든 게임과 도구예요. 설치도 가입도 없이 휴대폰에서 바로 열려요.</p>
-    <button class="install" id="installBtn" type="button" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m-5-5l5 5 5-5M5 19h14"/></svg>홈 화면에 앱으로 추가</button>
+    <div class="hero-btns">
+      <button class="install" id="installBtn" type="button" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m-5-5l5 5 5-5M5 19h14"/></svg>홈 화면에 앱으로 추가</button>
+      <a class="install ohsang" href="https://ohsangplay.com/"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>오상플레이 놀러가기</a>
+    </div>
   </div>
 </header>
 
